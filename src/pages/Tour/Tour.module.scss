@@ -1,0 +1,536 @@
+@import "../../common/include-media";
+
+// SOS ocean palette
+$foam: #e8f1f8;
+$light-ocean: #c5dae8;
+$ocean-blue: #0582ca;
+$bright-azure: #00a6fb;
+$deep-ocean: #001220;
+$white: #ffffff;
+$muted: #414141;
+
+// ─── Hero ──────────────────────────────────────────────
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, $foam 0%, $light-ocean 100%);
+  overflow: hidden;
+
+  @include media(">mobile") {
+    width: 200vh;
+    height: 100vh;
+    padding: 0 13.33vh;
+    justify-content: space-between;
+  }
+  @include media("<=mobile") {
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 6rem 1.5rem 4rem;
+  }
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+
+  @include media(">mobile") {
+    // max-width: 60vh;
+  }
+}
+
+.eyebrow {
+  font:
+    600 1.5vh/110% "Neue Haas Grotesk Display Pro",
+    Arial,
+    Helvetica,
+    sans-serif;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $ocean-blue;
+  margin-bottom: 3vh;
+
+  @include media("<=mobile") {
+    font-size: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.heroTitle {
+  font:
+    600 14vh/92% "New York Extra Large",
+    serif;
+  letter-spacing: -0.06em;
+  color: $deep-ocean;
+  opacity: 0;
+
+  @include media("<=mobile") {
+    font-size: 4.5rem;
+  }
+}
+
+.heroSub {
+  font:
+    500 2.35vh/150% "Neue Haas Grotesk Display Pro",
+    Arial,
+    Helvetica,
+    sans-serif;
+  color: $muted;
+  margin-top: 4vh;
+  // max-width: 45vh;
+
+  @include media("<=mobile") {
+    font-size: 1rem;
+    margin-top: 2rem;
+    max-width: 100%;
+  }
+}
+
+// Hero image — SZA sinking (uses local kill-bill asset)
+.heroImage {
+  position: relative;
+  overflow: hidden;
+
+  @include media(">mobile") {
+    width: 80vh;
+    height: 70vh;
+    margin-left: auto;
+  }
+  @include media("<=mobile") {
+    width: 100%;
+    height: 50vh;
+    margin-top: 3rem;
+  }
+}
+
+.heroImageInner {
+  width: 100%;
+  height: 100%;
+  background-image: url("../../assets/sza-kill-bill.webp");
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.85) saturate(1.1);
+}
+
+// ─── Marquee ───────────────────────────────────────────
+.marqueeSection {
+  background: $light-ocean;
+  border-top: 1px solid rgba(5, 130, 202, 0.2);
+  border-bottom: 1px solid rgba(5, 130, 202, 0.2);
+
+  @include media(">mobile") {
+    width: 120vh;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+  @include media("<=mobile") {
+    padding: 2rem 0;
+  }
+}
+
+.marquee {
+  cursor: pointer;
+}
+
+.marqueeText {
+  font:
+    300 8vh/185% "Neue Haas Grotesk Display Pro",
+    Arial,
+    Helvetica,
+    sans-serif;
+  color: $deep-ocean;
+  transition: all 100ms linear;
+  white-space: nowrap;
+
+  @include media(">mobile") {
+    padding: 0 3.9vh;
+  }
+  @include media("<=mobile") {
+    font-size: 2rem;
+    padding: 0 1.5rem;
+  }
+}
+
+.marqueeDot {
+  color: $bright-azure;
+  margin: 0 1vh;
+  font-size: 0.5em;
+  vertical-align: middle;
+}
+
+// ─── Dates sections ────────────────────────────────────
+.datesSection {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  @include media(">mobile") {
+    height: 100vh;
+    padding: 10vh 13.33vh;
+  }
+  @include media("<=mobile") {
+    padding: 5rem 1.5rem;
+  }
+}
+
+// Past: light ocean → ocean blue
+.datesSection:not(.upcomingSection) {
+  background: linear-gradient(135deg, $light-ocean 0%, $ocean-blue 100%);
+
+  @include media(">mobile") {
+    width: 380vh;
+  }
+}
+
+// Upcoming: ocean blue → deep ocean
+.upcomingSection {
+  background: linear-gradient(135deg, $ocean-blue 0%, $deep-ocean 100%);
+
+  @include media(">mobile") {
+    width: 220vh;
+  }
+}
+
+.sectionHeader {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 6vh;
+  flex-shrink: 0;
+
+  @include media(">mobile") {
+    width: 50vh;
+  }
+  @include media("<=mobile") {
+    margin-bottom: 3rem;
+  }
+}
+
+.sectionLabel {
+  font:
+    600 1.5vh/110% "Neue Haas Grotesk Display Pro",
+    Arial,
+    Helvetica,
+    sans-serif;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $deep-ocean;
+  margin-bottom: 2vh;
+
+  @include media("<=mobile") {
+    font-size: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .upcomingSection & {
+    color: $bright-azure;
+  }
+}
+
+.sectionTitle {
+  font:
+    600 8vh/98.49% "New York Extra Large",
+    serif;
+  letter-spacing: -0.06em;
+  color: $deep-ocean;
+
+  @include media("<=mobile") {
+    font-size: 3rem;
+  }
+
+  .upcomingSection & {
+    color: $white;
+  }
+}
+
+// ─── Card strip (horizontal) ───────────────────────────
+.cardStrip {
+  display: flex;
+  align-items: stretch;
+
+  @include media(">mobile") {
+    gap: 4vh;
+    height: 65vh;
+  }
+  @include media("<=mobile") {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+
+// ─── Tour card ─────────────────────────────────────────
+.tourCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  border-radius: 1.5vh;
+  overflow: hidden;
+  transition: transform 400ms ease;
+
+  @include media(">mobile") {
+    width: 32vh;
+    height: 100%;
+  }
+  @include media("<=mobile") {
+    width: 100%;
+  }
+
+  &:hover {
+    transform: translateY(-1vh);
+  }
+}
+
+.cardImageWrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  flex: 1;
+
+  @include media(">mobile") {
+    height: 40vh;
+  }
+  @include media("<=mobile") {
+    height: 40vh;
+  }
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 600ms ease;
+
+  .tourCard:hover & {
+    transform: scale(1.05);
+  }
+}
+
+.cardOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(0, 18, 32, 0.7) 100%);
+  pointer-events: none;
+}
+
+// Date badge on image
+.cardDate {
+  position: absolute;
+  top: 1.5vh;
+  left: 1.5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: rgba(0, 18, 32, 0.6);
+  backdrop-filter: blur(8px);
+  border-radius: 1vh;
+  padding: 1vh 1.5vh;
+
+  @include media("<=mobile") {
+    top: 0.75rem;
+    left: 0.75rem;
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+.cardDay {
+  font:
+    600 3vh/100% "New York Extra Large",
+    serif;
+  color: $white;
+  letter-spacing: -0.04em;
+
+  @include media("<=mobile") {
+    font-size: 1.5rem;
+  }
+}
+
+.cardMonth {
+  font:
+    600 1.2vh/110% "Neue Haas Grotesk Display Pro",
+    Arial,
+    Helvetica,
+    sans-serif;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: $bright-azure;
+  margin-top: 0.3vh;
+
+  @include media("<=mobile") {
+    font-size: 0.65rem;
+  }
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  padding: 2vh 1.5vh;
+
+  @include media("<=mobile") {
+    padding: 1.25rem 1rem;
+  }
+}
+
+.cardVenue {
+  font:
+    500 2.4vh/120% "New York Extra Large",
+    serif;
+  letter-spacing: -0.02em;
+  color: $deep-ocean;
+  margin-bottom: 0.8vh;
+
+  @include media("<=mobile") {
+    font-size: 1.25rem;
+  }
+
+  .upcoming & {
+    color: $white;
+  }
+}
+
+.cardCity {
+  font:
+    500 1.5vh/140% "Neue Haas Grotesk Display Pro",
+    Arial,
+    Helvetica,
+    sans-serif;
+  letter-spacing: 0.05em;
+  color: $muted;
+  margin-bottom: 1.5vh;
+
+  @include media("<=mobile") {
+    font-size: 0.85rem;
+  }
+
+  .upcoming & {
+    color: rgba(255, 255, 255, 0.6);
+  }
+}
+
+.cardStatus {
+  font:
+    600 1.3vh/110% "Neue Haas Grotesk Display Pro",
+    Arial,
+    Helvetica,
+    sans-serif;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(0, 18, 32, 0.4);
+
+  @include media("<=mobile") {
+    font-size: 0.7rem;
+  }
+
+  .upcoming & {
+    color: $bright-azure;
+  }
+}
+
+.ticketLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1vh 2.5vh;
+  border: 1px solid $bright-azure;
+  border-radius: 100px;
+  font:
+    600 1.3vh/110% "Neue Haas Grotesk Display Pro",
+    Arial,
+    Helvetica,
+    sans-serif;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: $bright-azure;
+  text-decoration: none;
+  transition: all 250ms ease;
+  white-space: nowrap;
+  width: fit-content;
+
+  @include media("<=mobile") {
+    font-size: 0.7rem;
+    padding: 0.5rem 1.25rem;
+  }
+
+  &:hover {
+    background: $bright-azure;
+    color: $deep-ocean;
+  }
+}
+
+// ─── Wave divider ──────────────────────────────────────
+.waveSection {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $ocean-blue;
+  color: $ocean-blue;
+  overflow: hidden;
+
+  @include media(">mobile") {
+    width: 100vh;
+    height: 100vh;
+    flex-direction: column;
+  }
+  @include media("<=mobile") {
+    padding: 4rem 1.5rem;
+  }
+}
+
+.wave {
+  width: 100%;
+  height: 10vh;
+  display: block;
+  color: $light-ocean;
+
+  @include media("<=mobile") {
+    height: 5rem;
+  }
+}
+
+.waveText {
+  font:
+    600 6vh/98.49% "New York Extra Large",
+    serif;
+  letter-spacing: -0.04em;
+  color: $white;
+  text-align: center;
+  margin-top: 3vh;
+
+  @include media("<=mobile") {
+    font-size: 2.5rem;
+    margin-top: 2rem;
+  }
+}
+
+// ─── Footer ────────────────────────────────────────────
+.tourFooter {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $deep-ocean;
+
+  @include media(">mobile") {
+    width: 80vh;
+    height: 100vh;
+  }
+  @include media("<=mobile") {
+    min-height: 40vh;
+    padding: 4rem 1.5rem;
+  }
+}
+
+.footerText {
+  font:
+    600 8vh/98.49% "New York Extra Large",
+    serif;
+  letter-spacing: -0.04em;
+  color: $bright-azure;
+  text-align: center;
+
+  @include media("<=mobile") {
+    font-size: 3rem;
+  }
+}
