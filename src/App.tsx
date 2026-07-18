@@ -13,6 +13,8 @@ import React, { useEffect, useState } from "react";
 import useWindowWidth from "./hooks/useWindowWidth";
 import { CSSTransition } from "react-transition-group";
 import Preloader from "./components/Preloader/Preloader";
+import SoundToggle from "./components/SoundToggle/SoundToggle";
+import useSound from "./hooks/useSound";
 import "../node_modules/locomotive-scroll/src/locomotive-scroll.scss";
 
 function App() {
@@ -21,6 +23,7 @@ function App() {
   const [open, setOpen] = useState<boolean>(false);
   const [preloaded, setPreloaded] = useState<boolean>(false);
   const [appLoaded, setAppLoaded] = useState<boolean>(false);
+  const sound = useSound();
 
   const routes = [
     { path: "/", name: "Home", Component: Home },
@@ -96,6 +99,15 @@ function App() {
       {!preloaded && <Preloader windowWidth={windowWidth} setPreloaded={setPreloaded} />}
       <Menu open={open} setOpen={setOpen} preloaded={preloaded} windowWidth={windowWidth} />
       <Banner />
+      {preloaded && (
+        <SoundToggle
+          isPlaying={sound.isPlaying}
+          track={sound.track}
+          onTogglePlay={sound.togglePlay}
+          onNext={sound.next}
+          onPrevious={sound.previous}
+        />
+      )}
       {routes.map(({ name, path, Component }) => (
         <Route key={path} exact path={path}>
           {({ match }) => (
